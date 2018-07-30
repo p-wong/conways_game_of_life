@@ -28,7 +28,7 @@ function updateBoard() {
   }
 
   //Checks if the current cell is alive or dead
-  function checkIfCurrCellIsAlive(currRow, currCol) {
+  function isAlive(currRow, currCol) {
     return board[currRow][currCol]
   }
 
@@ -63,41 +63,13 @@ function updateBoard() {
     return count
   }
 
-  //Makes the cell in the next board alive
-  function makeCellAlive(currRow, currCol) {
-    nextBoard[currRow][currCol] = 1
-  }
-
-  //Makes the cell in the next board dead
-  function makeCellDead(currRow, currCol) {
-    nextBoard[currRow][currCol] = 0
-  }
-
-  //For alive cell - checks how many alive neighbors there are, and according to the rules, changes the cell in the next board alive or dead
-  function changeCurrAliveCell(currRow, currCol) {
-    if (aliveNeighborCount(currRow, currCol) < 2 || aliveNeighborCount(currRow, currCol) > 3) {
-      makeCellDead(currRow, currCol)
-    } else {
-      makeCellAlive(currRow, currCol)
-    }
-  }
-
-  //For dead cell - checks how many alive neighbors there are, and according to the rules, changes the cell in the next board alive or dead
-  function changeCurrDeadCell(currRow, currCol) {
-    if (aliveNeighborCount(currRow, currCol) === 3) {
-      makeCellAlive(currRow, currCol)
-    } else {
-      makeCellDead(currRow, currCol)
-    }
-  }
-
   //Updates the next board
   for (let currRow = 0; currRow < board.length; currRow++) {
     for (let currCol = 0; currCol < board[0].length; currCol++) {
-      if (checkIfCurrCellIsAlive(currRow, currCol)) {
-        changeCurrAliveCell(currRow, currCol)
+      if ((isAlive(currRow, currCol) && aliveNeighborCount(currRow, currCol) === 2) || (aliveNeighborCount(currRow, currCol) === 3)) {
+        nextBoard[currRow][currCol] = 1
       } else {
-        changeCurrDeadCell(currRow, currCol)
+        nextBoard[currRow][currCol] = 0
       }
     }
   }
