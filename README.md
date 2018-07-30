@@ -4,7 +4,7 @@ Depicts the game of life in vanilla JavaScript.
 
 ## Motivation
 
-This is a student project, created for educational purposes.
+This was inspired by an interview question. I was interested in the problem and decided to build out the full game.
 
 ## Demo
 
