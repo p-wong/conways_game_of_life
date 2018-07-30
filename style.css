@@ -1,0 +1,24 @@
+* {
+  padding: 0; margin: 0;
+  background: black;
+  font-family: 'Audiowide';
+  color: #f2f6ff;
+}
+
+canvas {
+  background: #000000;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  border: 3px solid #f2f6ff;
+  font-family: 'Audiowide';
+}
+
+h2 {
+  font-size: 45px;
+}
+
+#innerContainer{
+  text-align: center;
+  margin-top: 30px;
+}
